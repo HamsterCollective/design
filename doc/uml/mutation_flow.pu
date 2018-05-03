@@ -1,0 +1,9 @@
+@startuml
+
+[*] --> undiscovered
+undiscovered: raw data that the user give to dextool
+undiscovered --> unknown : found by analyzer
+unknown: unclassified mutants are in the state unknown
+unknown --> classified : mutation "test"
+classified: survived/killed/equivalent etc
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+skinparam componentStyle uml2
+
+component Frontend
+component Coordinator as coord
+component "Mutation\nAnalyzer" as mutanal
+component "Single SrcCode\nMutator" as singlemut
+component "Single Tester" as tester
+component "Schema Tester" as schemtest
+component Report as report
+component "Coverage\nAnalyzer" as covanal <<optional>>
+component "Equivalent\nDetector" as eqdec <<optional>>
+component "Schemata Producer" as schemprod <<optional>>
+
+interface IAnalyze
+interface IClassify
+interface ISingleMutant
+interface ISchemaMutant
+interface ICovData
+interface IStatus
+
+Frontend -> coord : control
+note top of Frontend
+for the human
+end note
+
+coord --( IAnalyze
+IAnalyze <-- mutanal
+
+coord --( ICovData
+ICovData <-- covanal
+
+coord --( IClassify
+IClassify <-- tester
+IClassify <-- eqdec
+IClassify <-- schemtest
+
+tester --( ISingleMutant
+eqdec --( ISingleMutant
+ISingleMutant <-- singlemut
+
+schemtest --( ISchemaMutant
+ISchemaMutant <-- schemprod
+
+report --( IStatus
+IStatus <-- coord
+@enduml
