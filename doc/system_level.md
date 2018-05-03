@@ -21,5 +21,8 @@ Additional components that add useful features:
  * Coverage Analyser. Analyze coverage information for *interesting* data such as what mutants are covered by the test suite.
  * Report Generator. Generate mutation reports for the user.
 
-[Structure](structure.png)
-An overview of the components and interfaces.
+# Overview
+
+This chapter contains the structural overview of the components, how they are connected and their interfaces.
+
+[![Overview](https://hamstercollective.github.io/design/pics/structure.png)](https://hamstercollective.github.io/design/pics)
