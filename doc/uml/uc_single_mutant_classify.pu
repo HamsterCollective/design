@@ -1,0 +1,31 @@
+@startuml
+actor Operator
+participant Frontend
+participant Coordinator
+participant "Single\nTester" as singletest
+participant "Single\nCode Mutator" as singlemut
+
+== Classify ==
+
+Operator -> Frontend : control parameters\nmutation ops
+activate Frontend
+Frontend -> Coordinator : configure
+activate Coordinator
+
+loop all mutants from config
+Coordinator -> singletest : push mutant
+activate singletest
+singletest -> singlemut : mutate src
+singletest <-- singlemut
+singletest -> singletest : compile program
+singletest -> singletest : run test suite
+Coordinator <-- singletest : report classification\nfor mutant
+deactivate singletest
+end
+
+Frontend <-- Coordinator : report status of classifying
+deactivate Coordinator
+
+Operator <-- Frontend
+deactivate Frontend
+@enduml
