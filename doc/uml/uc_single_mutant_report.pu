@@ -1,0 +1,27 @@
+@startuml
+actor Operator
+participant Frontend
+participant Coordinator
+participant Report
+
+== Report ==
+
+Operator -> Frontend : all classified mutants
+activate Frontend
+
+Frontend -> Report : config data
+activate Report
+
+Report -> Coordinator : pull data
+activate Coordinator
+Report <-- Coordinator : all mutants
+deactivate Coordinator
+
+Report -> Report : create report
+Frontend <-- Report : where to find report
+deactivate Report
+
+Operator <-- Frontend : open report
+deactivate Frontend
+
+@enduml

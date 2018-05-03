@@ -1,0 +1,21 @@
+@startuml
+actor Operator
+participant Frontend
+participant Coordinator
+participant "Mutant\nAnalyzer" as mutana
+
+Operator -> Frontend : src,buildenv
+activate Frontend
+Frontend -> Coordinator : passe over info from user
+
+Coordinator -> mutana : src,buildenv
+activate mutana
+mutana -> mutana : discover possible\nmutants
+Coordinator <-- mutana : send over data
+deactivate mutana
+
+Frontend <-- Coordinator : report success/fail of analyse
+deactivate Frontend
+
+Operator <-- Frontend : prettify the result
+@enduml
