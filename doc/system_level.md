@@ -48,7 +48,9 @@ This chapter contains how the components interact with each other and there resp
 
 The operator wants to use the minimal required components for mutation testing of a C++ code base.
 
-## Analyze
+This use case is broken down into the following three phases:
+
+### Analyze
 
 The operator wants to analyze the source code for the program to perform mutation testing on.
 
@@ -56,13 +58,13 @@ The operator wants to analyze the source code for the program to perform mutatio
 
 [![Single Mutant Analyze](https://hamstercollective.github.io/design/pics/uc_single_mutant_analyze.png)](https://hamstercollective.github.io/design/pics)
 
-## Classify
+### Classify
 
 The operator wants to perform a classification of the unknown mutants that where found by the analyzer.
 
 [![Single Mutant Classify](https://hamstercollective.github.io/design/pics/uc_single_mutant_classify.png)](https://hamstercollective.github.io/design/pics)
 
-## Report
+### Report
 
 The operator wants to see the mutation score, survived mutants and other useful data that has been found by the classifier.
 
